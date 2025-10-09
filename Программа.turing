@@ -6,118 +6,110 @@
         "Y"
     ],
     "states": {
-        "q0": {
-            "1": "X R q1",
+        "1_to_X": {
+            "1": "X R go_right",
             "comment": "",
             ".": "λ L !",
             "X": "R",
             "Y": "N",
             "λ": "N"
         },
-        "q1": {
+        "go_right": {
             "1": "R",
             "comment": "",
             ".": "R",
             "X": "N",
             "Y": "R",
-            "λ": "λ L q2"
+            "λ": "λ L 1_to_Y"
         },
-        "q2": {
-            "1": "Y L q3",
+        "1_to_Y": {
+            "1": "Y L check_2n_end",
             "comment": "",
             ".": "N",
             "X": "N",
             "Y": "L",
             "λ": "N"
         },
-        "q3": {
-            "1": "1 L q4",
+        "check_2n_end": {
+            "1": "1 L not_2n_end",
             "comment": "",
-            ".": ". L 2end",
+            ".": ". L 2n_end",
             "X": "N",
             "Y": "N",
             "λ": "N"
         },
-        "q4": {
+        "not_2n_end": {
             "1": "L",
             "comment": "",
-            ".": ". L check",
+            ".": ". L check_2n_bigger",
             "X": "L",
             "Y": "N",
-            "λ": "λ R q0"
+            "λ": "λ R 1_to_X"
         },
-        "equal": {
-            "1": "N",
-            "comment": "",
-            ".": "N",
-            "X": "L",
-            "Y": "N",
-            "λ": "λ R xdel"
-        },
-        "2end": {
+        "2n_end": {
             "1": "L",
             "comment": "",
             ".": "N",
-            "X": "X L equal",
+            "X": "X L nums_equal",
             "Y": "N",
-            "λ": "λ R xdel"
+            "λ": "λ R del_X"
         },
-        "q5": {
-            "1": "N",
-            "comment": "",
-            ".": "N",
-            "X": "N",
-            "Y": "N",
-            "λ": "N"
-        },
-        "xdel": {
-            "1": "R",
-            "comment": "",
-            ".": "R",
-            "X": "λ R xdel",
-            "Y": "1 R xdel",
-            "λ": "λ L q6"
-        },
-        "check": {
-            "1": "1 L q4",
-            "comment": "",
-            ".": "N",
-            "X": "X L 2bigger",
-            "Y": "N",
-            "λ": "N"
-        },
-        "2bigger": {
+        "nums_equal": {
             "1": "N",
             "comment": "",
             ".": "N",
             "X": "L",
             "Y": "N",
-            "λ": "λ R 2del"
+            "λ": "λ R del_X"
         },
-        "2del": {
+        "check_2n_bigger": {
+            "1": "1 L not_2n_end",
+            "comment": "",
+            ".": "N",
+            "X": "X L 2n_bigger",
+            "Y": "N",
+            "λ": "N"
+        },
+        "2n_bigger": {
+            "1": "N",
+            "comment": "",
+            ".": "N",
+            "X": "L",
+            "Y": "N",
+            "λ": "λ R del_Y"
+        },
+        "del_Y": {
             "1": "R",
             "comment": "",
             ".": "R",
-            "X": "1 R 2del",
-            "Y": "λ R 2del",
-            "λ": "λ L q7"
+            "X": "1 R del_Y",
+            "Y": "λ R del_Y",
+            "λ": "λ L go_left_1"
         },
-        "q7": {
-            "1": "1 L q6",
+        "del_X": {
+            "1": "R",
+            "comment": "",
+            ".": "R",
+            "X": "λ R del_X",
+            "Y": "1 R del_X",
+            "λ": "λ L go_left_2"
+        },
+        "go_left_1": {
+            "1": "1 L go_left_2",
             "comment": "",
             ".": "N",
             "X": "N",
             "Y": "N",
             "λ": "L"
         },
-        "q6": {
+        "go_left_2": {
             "1": "L",
             "comment": "",
             ".": "L",
             "X": "L",
             "Y": "L",
-            "λ": "λ R q0"
+            "λ": "λ R 1_to_X"
         }
     },
-    "word": "11111.11"
+    "word": "111.1111"
 }
