@@ -22,20 +22,36 @@ void gnome_sort(vector<int>& arr){
 }
 
 // проверка на ввод числа
-bool check_int(int& var){
+void get_int(int& var){
 
-    if (cin >> var){  
+    while(!(cin >> var)){  
+        cout << "Некорректный ввод." << endl
+             << "Введите число: ";
+        cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        return true;
     }
-    cin.clear();
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    return false;
 }
 
 // ввод с клавиатуры
-void keyboard_input(){
+void keyboard_input(vector<int>& arr){
 
+    int size = 0;
+    do {
+        cout << "Введите размер массива: " << endl;
+        get_int(size);
+
+        if (size < 1)
+            cout << "Некорректный размер массива.";
+    } while(size < 1);
+
+    int element;
+    for (size_t i = 0; i < size; i++){
+        cout << "Введите элемент массива: ";
+        get_int(element);
+
+        arr.push_back(element);
+    } 
 }
 
 // заполнение рандомными числами
@@ -48,36 +64,41 @@ void file_input(){
     
 }
 
+// вывод массива
+void print_array(vector<int>& array_to_print){
+    for (int num : array_to_print)
+        cout << num << " ";
+    cout << endl;
+}
+
 // главное меню
-enum menu_items {keyboard = 1, random, file, prog_exit};
+enum menu_items {keyboard = 1, random_items, file, prog_exit};
 
-void main_menu(){
-    cout << "Гномья сортировка" << endl
-         << "Выберите способ заполнения массива:" << endl
-         << "1 - Заполнение с клавиатуры;" << endl
-         << "2 - Заполнение случайными числами;" << endl
-         << "3 - Загрузка данных из файла;" << endl
-         << "4 - Выход." << endl;
-
+int main(){
 
     vector<int> array_to_sort;
-    int user_choice;
-
+    int user_choice = 0;
+   
     do {
+        if (user_choice == 0){
+        cout << "Гномья сортировка" << endl
+             << "Выберите способ заполнения массива:" << endl
+             << "1 - Заполнение с клавиатуры;" << endl
+             << "2 - Заполнение случайными числами;" << endl
+             << "3 - Загрузка данных из файла;" << endl
+             << "4 - Выход." << endl;
+        }
 
         cout << "Введите число: ";
-        if (!check_int(user_choice)){
-            cout << "Некорректный ввод." << endl;
-            continue;
-        } 
+        get_int(user_choice);
 
         switch (user_choice)
         {
         case keyboard:
-            keyboard_input();
+            keyboard_input(array_to_sort);
             break;
 
-        case random:
+        case random_items:
             random_input();
             break;
 
@@ -86,27 +107,13 @@ void main_menu(){
         break;  
 
         case prog_exit:
-            return;
+            return 0;
         
         default:
             cout << "Некорректный пункт меню." << endl;
             break;
         }
 
-    } while(true);
-}
+    } while(user_choice != prog_exit);
 
-int main(){
-
-    vector<int> arr = {9, 0, 11, 4, -5, 69, -666};
-
-    gnome_sort(arr);
-    
-    for(int a : arr)
-        cout << a << " ";
-    cout << endl;
-
-    main_menu();
-
-    return 0;
 }
