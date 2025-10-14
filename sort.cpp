@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <algorithm>
 
 using namespace std;
 
@@ -33,6 +34,24 @@ void get_int(int& var){
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
+}
+
+
+// проверка на запрещенные названия для windows
+bool is_forbidden_name(string path) {
+	const string forbidden_names[] = { "CON", "PRN", "AUX", "NUL", "COM1", "COM2", "COM3", "COM4", "COM5", "COM6",
+	"COM7", "COM8", "COM9", "LPT1", "LPT2", "LPT3", "LPT4", "LPT5", "LPT6", "LPT7", "LPT8", "LPT9" };
+
+	if (path.find_last_of('\\') != string::npos)
+		path = path.substr(path.find_last_of('\\') + 1);
+
+	transform(path.begin(), path.end(), path.begin(), [](unsigned char c) { return static_cast<unsigned char>(toupper(c)); });
+
+	for (const string& name : forbidden_names)
+		if (path == name)
+			return true;
+
+	return false;
 }
 
 // ввод с клавиатуры
@@ -113,7 +132,34 @@ void random_input(vector<int>& arr){
     }
 }
 
-bool check_file_path(string& path){
+enum rewrite_menu_items {rewrite = 1, do_not_rewrite};
+
+bool rewrite_file_menu(){
+    int user_choice = 0;
+
+    cout << "Перезаписать данные файла?" << endl
+         << "1 - Да" << endl
+         << "2 - Нет" << endl;
+
+    do {
+        cout << "Введите число: ";
+        get_int(user_choice);
+        switch (user_choice)
+        {
+        case rewrite:
+            return true;
+
+        case do_not_rewrite:
+            return false;
+        
+        default:
+            cout << "Некорректный пункт меню." << endl;
+            break;
+        }
+     } while(user_choice != 1 && user_choice != 2);
+}
+
+bool check_inp_file_path(string& path){
     ifstream file;
 
     file.open(path);
@@ -121,6 +167,20 @@ bool check_file_path(string& path){
     if (!file.is_open())
         return false;
     
+    file.close();
+
+    return true;
+}
+
+bool check_outp_file_path(string& path){
+
+    if (is_forbidden_name(path))
+        return false;
+
+    ofstream file;
+    file.open(path, ios::app);
+    if (!file.is_open())
+        return false;
     file.close();
 
     return true;
@@ -134,17 +194,47 @@ void file_input(vector<int>& arr){
     do {
         cout << "Введите путь к файлу: ";
         cin >> path;
-    } while(!check_file_path(path));
+
+        if (!check_inp_file_path(path))
+            cout << "Файл не найден." << endl;
+    } while(!check_inp_file_path(path));
 
     file.open(path);
 
     int element = 0;
-    while(!file.eof()){
-        file >> element;
-        arr.push_back(element);
-    }
+    while(!file.eof())
+        if(file >> element)
+            arr.push_back(element);
+    
     file.close();
 
+}
+
+void file_output(vector<int>& arr){
+    ofstream file;
+    string path;
+
+    do {
+        cout << "Введите путь к файлу: ";
+        cin >> path;
+
+        if (!check_outp_file_path(path))
+            cout << "Некорректный путь" << endl;
+
+        if (check_inp_file_path(path)){
+            cout << "Файл с таким названием уже существует." << endl;
+            if (rewrite_file_menu())
+                break;
+            else
+                path = "";
+        }
+    } while(!check_outp_file_path(path));
+
+    file.open(path);
+    for (int element : arr)
+        file << element << " ";
+
+    file.close();
 }
 
 // вывод массива
@@ -152,7 +242,19 @@ void print_array(vector<int>& array_to_print){
     cout << endl;
     for (int num : array_to_print)
         cout << num << " ";
-    cout << endl << endl;
+    cout << endl;
+}
+
+void results(void (*input) (vector<int>& arr)){
+    vector<int> array_to_sort;
+
+    input(array_to_sort);
+    print_array(array_to_sort);
+
+    gnome_sort(array_to_sort);
+    print_array(array_to_sort);
+
+    array_to_sort.clear();
 }
 
 // главное меню
@@ -161,7 +263,6 @@ enum menu_items {keyboard = 1, random_items, file, prog_exit};
 int main(){
     srand(0);
     
-    vector<int> array_to_sort;
     int user_choice = 0;
    
     do {
@@ -181,41 +282,26 @@ int main(){
         switch (user_choice)
         {
         case keyboard:
-            keyboard_input(array_to_sort);
-            print_array(array_to_sort);
-
-            gnome_sort(array_to_sort);
-            print_array(array_to_sort);
-            array_to_sort.clear();
+            results(keyboard_input);
             user_choice = 0;
-        break;
+            break;
 
         case random_items:
-            random_input(array_to_sort);
-            print_array(array_to_sort);
-
-            gnome_sort(array_to_sort);
-            print_array(array_to_sort);
-            array_to_sort.clear();
+            results(random_input);
             user_choice = 0;
-        break;
+            break;
 
         case file:
-            file_input(array_to_sort);
-            print_array(array_to_sort);
-
-            gnome_sort(array_to_sort);
-            print_array(array_to_sort);
-            array_to_sort.clear();
+            results(file_input);
             user_choice = 0;
-        break;  
+            break;  
 
         case prog_exit:
             return 0;
         
         default:
             cout << "Некорректный пункт меню." << endl;
-        break;
+            break;
         }
 
     } while(user_choice != prog_exit);
