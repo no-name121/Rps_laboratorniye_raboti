@@ -1,6 +1,8 @@
 #include <iostream>
 #include <limits>
 #include <vector>
+#include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -111,9 +113,38 @@ void random_input(vector<int>& arr){
     }
 }
 
-// ввод из файла
-void file_input(){
+bool check_file_path(string& path){
+    ifstream file;
+
+    file.open(path);
+
+    if (!file.is_open())
+        return false;
     
+    file.close();
+
+    return true;
+}
+
+// ввод из файла
+void file_input(vector<int>& arr){
+    ifstream file;
+    string path;
+
+    do {
+        cout << "Введите путь к файлу: ";
+        cin >> path;
+    } while(!check_file_path(path));
+
+    file.open(path);
+
+    int element = 0;
+    while(!file.eof()){
+        file >> element;
+        arr.push_back(element);
+    }
+    file.close();
+
 }
 
 // вывод массива
@@ -145,11 +176,15 @@ int main(){
 
         cout << "Введите число: ";
         get_int(user_choice);
+        cout << endl;
 
         switch (user_choice)
         {
         case keyboard:
             keyboard_input(array_to_sort);
+            print_array(array_to_sort);
+
+            gnome_sort(array_to_sort);
             print_array(array_to_sort);
             array_to_sort.clear();
             user_choice = 0;
@@ -158,12 +193,18 @@ int main(){
         case random_items:
             random_input(array_to_sort);
             print_array(array_to_sort);
+
+            gnome_sort(array_to_sort);
+            print_array(array_to_sort);
             array_to_sort.clear();
             user_choice = 0;
         break;
 
         case file:
-            file_input();
+            file_input(array_to_sort);
+            print_array(array_to_sort);
+
+            gnome_sort(array_to_sort);
             print_array(array_to_sort);
             array_to_sort.clear();
             user_choice = 0;
