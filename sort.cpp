@@ -68,16 +68,15 @@ void keyboard_input(vector<int>& arr){
 
     int element;
     for (size_t i = 0; i < size; i++){
-        cout << "Введите элемент массива: ";
+        cout << "Введите " << i+1 << " элемент массива: ";
         get_int(element);
 
         arr.push_back(element);
     } 
 }
 
-// заполнение рандомными числами
 enum range_input {without_range = 1, with_range};
-
+// заполнение рандомными числами
 void random_input(vector<int>& arr){
     int size = 0;
     do {
@@ -133,7 +132,7 @@ void random_input(vector<int>& arr){
 }
 
 enum rewrite_menu_items {rewrite = 1, do_not_rewrite};
-
+// меню на перезапись файла
 bool rewrite_file_menu(){
     int user_choice = 0;
 
@@ -157,8 +156,11 @@ bool rewrite_file_menu(){
             break;
         }
      } while(user_choice != 1 && user_choice != 2);
+
+     return false;
 }
 
+// проверка пути файла на ввод данных
 bool check_inp_file_path(string& path){
     ifstream file;
 
@@ -172,6 +174,7 @@ bool check_inp_file_path(string& path){
     return true;
 }
 
+// проверка пути файла на вывод данных
 bool check_outp_file_path(string& path){
 
     if (is_forbidden_name(path))
@@ -210,6 +213,7 @@ void file_input(vector<int>& arr){
 
 }
 
+// созпанение данных в файл
 void file_output(vector<int>& arr){
     ofstream file;
     string path;
@@ -237,6 +241,34 @@ void file_output(vector<int>& arr){
     file.close();
 }
 
+// меню сохранения данных в файл
+bool save_file_menu(){
+    int user_choice = 0;
+
+    cout << "Сохранить результат сортировки в файл?" << endl
+         << "1 - Да" << endl
+         << "2 - Нет" << endl;
+
+    do {
+        cout << "Введите число: ";
+        get_int(user_choice);
+        switch (user_choice)
+        {
+        case rewrite:
+            return true;
+
+        case do_not_rewrite:
+            return false;
+        
+        default:
+            cout << "Некорректный пункт меню." << endl;
+            break;
+        }
+     } while(user_choice != 1 && user_choice != 2);
+
+     return false;
+}
+
 // вывод массива
 void print_array(vector<int>& array_to_print){
     cout << endl;
@@ -245,14 +277,23 @@ void print_array(vector<int>& array_to_print){
     cout << endl;
 }
 
+// ввод разными методами, обработка результатов
 void results(void (*input) (vector<int>& arr)){
     vector<int> array_to_sort;
 
     input(array_to_sort);
+    cout << endl << "Исходный массив: ";
     print_array(array_to_sort);
 
     gnome_sort(array_to_sort);
+    cout << "Отсортированный массив: ";
     print_array(array_to_sort);
+    cout << endl;
+
+    if(save_file_menu()){
+        file_output(array_to_sort);
+        cout << "Данные сохранены в файл." << endl << endl;
+    }
 
     array_to_sort.clear();
 }
@@ -267,7 +308,9 @@ int main(){
    
     do {
         if (user_choice == 0){
-        cout << "Гномья сортировка" << endl
+        cout << "---------------------" << endl
+             << "| Гномья сортировка |" << endl
+             << "---------------------" << endl
              << "Выберите способ заполнения массива:" << endl
              << "1 - Заполнение с клавиатуры;" << endl
              << "2 - Заполнение случайными числами;" << endl
