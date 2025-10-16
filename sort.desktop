@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=sort
+Exec=/home/yulia/Desktop/Программные_системы/Sortirovka/sort
+Icon=utilities-terminal
+Terminal=true
+Type=Application

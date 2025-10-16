@@ -1,4 +1,7 @@
-#include "input.h"
+#include "input_output.h"
+#include "check_functions.h"
+#include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -86,7 +89,7 @@ void file_input(vector<int>& arr){
 
     do {
         cout << "Введите путь к файлу: ";
-        cin >> path;
+        getline(cin, path);
 
         if (!check_inp_file_path(path))
             cout << "Файл не найден." << endl;
@@ -101,4 +104,90 @@ void file_input(vector<int>& arr){
     
     file.close();
 
+}
+
+enum rewrite_menu_items {rewrite = 1, do_not_rewrite};
+// меню на перезапись файла
+bool rewrite_file_menu(){
+    int user_choice = 0;
+
+    cout << "Перезаписать данные файла?" << endl
+         << "1 - Да" << endl
+         << "2 - Нет" << endl;
+
+    do {
+        cout << "Введите число: ";
+        get_int(user_choice);
+        switch (user_choice)
+        {
+        case rewrite:
+            return true;
+
+        case do_not_rewrite:
+            return false;
+        
+        default:
+            cout << "Некорректный пункт меню." << endl;
+            break;
+        }
+     } while(user_choice != 1 && user_choice != 2);
+
+     return false;
+}
+
+// меню сохранения данных в файл
+bool save_file_menu(){
+    int user_choice = 0;
+
+    cout << "Сохранить результат сортировки в файл?" << endl
+         << "1 - Да" << endl
+         << "2 - Нет" << endl;
+
+    do {
+        cout << "Введите число: ";
+        get_int(user_choice);
+        switch (user_choice)
+        {
+        case rewrite:
+            return true;
+
+        case do_not_rewrite:
+            return false;
+        
+        default:
+            cout << "Некорректный пункт меню." << endl;
+            break;
+        }
+     } while(user_choice != 1 && user_choice != 2);
+
+     return false;
+}
+
+// созпанение данных в файл
+void file_output(vector<int>& arr){
+    ofstream file;
+    string path;
+
+    do {
+        cout << "Введите путь к файлу: ";
+        getline(cin, path);
+
+        if (check_inp_file_path(path)){
+            cout << "Файл с таким названием уже существует." << endl;
+            if (rewrite_file_menu())
+                break;
+        else { 
+            if (!check_outp_file_path(path))
+                cout << "Некорректный путь" << endl;
+            path = "";
+            }    
+        }
+
+    } while(!check_outp_file_path(path));
+
+    file.open(path);
+    for (int element : arr)
+        file << element << " ";
+
+    file.close();
 }
