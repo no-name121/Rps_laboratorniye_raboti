@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <clocale>
+#include "sort.h"
 #include "input_output.h"
 #include "check_functions.h"
 
@@ -44,7 +45,7 @@ void results(void (*input) (vector<int>& arr)){
     print_array(array_to_sort);
     cout << endl;
 
-    if(save_file_menu()){
+    if(yes_no_menu("Сохранить результат сортировки в файл?")){
         file_output(array_to_sort);
         cout << "Данные сохранены в файл." << endl << endl;
     }
@@ -103,5 +104,5 @@ int main(){
             break;
         }
 
-    } while(user_choice != prog_exit);
+    } while(true);
 }

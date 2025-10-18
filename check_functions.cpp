@@ -18,6 +18,21 @@ void get_int(int& var){
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
+// проверка на ввод размера массива
+int get_array_size(){
+    int size = 0;
+    do {
+        cout << "Введите размер массива: ";
+        get_int(size);
+
+        if (size >= 1)
+            return size;
+        else
+            cout << "Некорректный размер массива.";
+
+    } while(true);
+}
+
 
 // проверка на запрещенные названия для windows
 bool is_forbidden_name(string path) {
@@ -37,7 +52,7 @@ bool is_forbidden_name(string path) {
 }
 
 // проверка пути файла на ввод данных
-bool check_inp_file_path(string& path){
+bool check_file_exits(string& path){
     ifstream file;
 
     file.open(path);
