@@ -28,7 +28,7 @@ int get_array_size(){
         if (size >= 1)
             return size;
         else
-            cout << "Некорректный размер массива.";
+            cout << "Некорректный размер массива." << endl;
 
     } while(true);
 }
