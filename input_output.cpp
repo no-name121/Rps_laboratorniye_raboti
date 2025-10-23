@@ -34,7 +34,7 @@ void random_input(vector<int>& arr){
         cout << "Введите число: ";
         get_int(user_choice);
 
-        if (user_choice == 1 || user_choice == 2){
+        if (user_choice == without_range || user_choice == with_range){
 
             switch (user_choice) {
 
@@ -90,12 +90,17 @@ void file_input(vector<int>& arr){
     file.open(path);
 
     int element = 0;
-    while(!file.eof())
-        if(file >> element)
-            arr.push_back(element);
+    while(file >> element)
+        arr.push_back(element);
     
-    file.close();
+    if (!file.eof() && file.fail()){
+        cout << "Ошибка при чтении данных из файла." << endl << endl;
+        arr.clear();
+        file.close();
+        return;
+    }
 
+    file.close();
 }
 
 
@@ -127,7 +132,7 @@ bool yes_no_menu(const string& message){
      return false;
 }
 
-// созпанение данных в файл
+// сохранение данных в файл
 void file_output(vector<int>& arr){
     ofstream file;
     string path;
