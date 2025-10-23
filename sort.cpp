@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <clocale>
-#include "sort.h"
 #include "input_output.h"
 #include "check_functions.h"
 
@@ -37,6 +36,10 @@ void results(void (*input) (vector<int>& arr)){
     vector<int> array_to_sort;
 
     input(array_to_sort);
+
+    if (array_to_sort.size() == 0)
+        return;
+
     cout << endl << "Исходный массив: ";
     print_array(array_to_sort);
 
