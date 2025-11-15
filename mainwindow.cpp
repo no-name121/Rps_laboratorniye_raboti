@@ -8,7 +8,10 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    connectDatabase();
     ui->setupUi(this);
+
+    ui->inputArray->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
 }
 
 MainWindow::~MainWindow()
@@ -37,8 +40,14 @@ void MainWindow::on_sortButton_clicked()
 }
 
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_saveButton_clicked()
 {
-    baza();
+
+}
+
+
+void MainWindow::on_menuButton_clicked()
+{
+
 }
 

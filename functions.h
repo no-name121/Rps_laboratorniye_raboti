@@ -6,6 +6,6 @@
 
 std::string vectorToStr(std::vector<int>& vec);
 
-void baza();
+void connectDatabase();
 
 #endif // FUNCTIONS_H

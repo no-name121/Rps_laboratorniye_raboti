@@ -10,6 +10,24 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -17,428 +35,245 @@
    <string notr="true">Background:rgb(0, 6, 21);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="profileImage">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>10</y>
-      <width>100</width>
-      <height>100</height>
-     </rect>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>100</width>
-      <height>100</height>
-     </size>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>Assets/profile.svg</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignmentFlag::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="signUpButton">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>190</y>
-      <width>141</width>
-      <height>34</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Зарегестрироваться</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="signInButton">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>150</y>
-      <width>141</width>
-      <height>34</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Войти</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="profileName">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>120</y>
-      <width>141</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Unsigned User</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignmentFlag::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="Line" name="line">
-    <property name="geometry">
-     <rect>
-      <x>150</x>
+      <x>160</x>
       <y>0</y>
-      <width>16</width>
+      <width>641</width>
       <height>601</height>
      </rect>
     </property>
-    <property name="orientation">
-     <enum>Qt::Orientation::Vertical</enum>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="infoButton">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>560</y>
-      <width>41</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>Assets/information.svg</normaloff>Assets/information.svg</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>24</width>
-      <height>24</height>
-     </size>
-    </property>
-    <property name="flat">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="setLength">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>60</y>
-      <width>52</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="minimum">
-     <number>1</number>
-    </property>
-    <property name="value">
-     <number>11</number>
-    </property>
-   </widget>
-   <widget class="QTableWidget" name="inputArray">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>90</y>
-      <width>101</width>
-      <height>341</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">gridline-color:rgb(255, 255, 255);  </string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Shape::Box</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Shadow::Sunken</enum>
-    </property>
-    <property name="sizeAdjustPolicy">
-     <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
-    </property>
-    <property name="autoScrollMargin">
-     <number>16</number>
-    </property>
-    <property name="verticalScrollMode">
-     <enum>QAbstractItemView::ScrollMode::ScrollPerItem</enum>
-    </property>
-    <property name="showGrid">
-     <bool>true</bool>
-    </property>
-    <property name="gridStyle">
-     <enum>Qt::PenStyle::SolidLine</enum>
-    </property>
-    <property name="rowCount">
-     <number>11</number>
-    </property>
-    <property name="columnCount">
-     <number>1</number>
-    </property>
-    <attribute name="horizontalHeaderVisible">
-     <bool>false</bool>
-    </attribute>
-    <attribute name="verticalHeaderVisible">
-     <bool>false</bool>
-    </attribute>
-    <attribute name="verticalHeaderCascadingSectionResizes">
-     <bool>false</bool>
-    </attribute>
-    <attribute name="verticalHeaderShowSortIndicator" stdset="0">
-     <bool>false</bool>
-    </attribute>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <column/>
-   </widget>
-   <widget class="QLabel" name="inputText">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>20</y>
-      <width>131</width>
-      <height>18</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Ввод массива</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="sizeText">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>60</y>
-      <width>61</width>
-      <height>18</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Размер:</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="randomNumsButton">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>450</y>
-      <width>121</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Случайные числа</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="sortButton">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>500</y>
-      <width>141</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Сортировать</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>Assets/sort.svg</normaloff>Assets/sort.svg</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>24</width>
-      <height>24</height>
-     </size>
-    </property>
-   </widget>
-   <widget class="QLabel" name="initialArrayText">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>20</y>
-      <width>171</width>
-      <height>18</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Исходный массив</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="sortedArrayText">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>100</y>
-      <width>241</width>
-      <height>18</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Отсортированный массив</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="initialArrayOutput">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>50</y>
-      <width>411</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="sortedArrayOutput">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>130</y>
-      <width>411</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>180</y>
-      <width>201</width>
-      <height>34</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string> Сохранить результат</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>Assets/save.svg</normaloff>Assets/save.svg</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>20</width>
-      <height>20</height>
-     </size>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="showSavedButton">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>250</y>
-      <width>261</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Показать сохраненные массивы</string>
-    </property>
-   </widget>
-   <widget class="Line" name="line2">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>220</y>
-      <width>471</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Orientation::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="Line" name="line3">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>0</y>
-      <width>16</width>
-      <height>601</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Orientation::Vertical</enum>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="textEdit">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>300</y>
-      <width>411</width>
-      <height>161</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border: 1px solid #ffffff;</string>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-    <property name="html">
-     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+    <layout class="QGridLayout" name="mainLayout" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,1,0,4,0">
+     <property name="leftMargin">
+      <number>10</number>
+     </property>
+     <property name="topMargin">
+      <number>10</number>
+     </property>
+     <property name="rightMargin">
+      <number>10</number>
+     </property>
+     <property name="bottomMargin">
+      <number>10</number>
+     </property>
+     <item row="6" column="3" colspan="2">
+      <widget class="QPushButton" name="saveButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string> Сохранить результат</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>Assets/save.svg</normaloff>Assets/save.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="3">
+      <widget class="QLineEdit" name="sortedArrayOutput">
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="1" rowspan="2">
+      <layout class="QVBoxLayout" name="lowerButtonsLayout" stretch="0,0">
+       <item>
+        <widget class="QPushButton" name="randomNumsButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Случайные числа</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="sortButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Сортировать</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>Assets/sort.svg</normaloff>Assets/sort.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>24</width>
+           <height>24</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="0" column="2" rowspan="17">
+      <widget class="Line" name="line">
+       <property name="orientation">
+        <enum>Qt::Orientation::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="3">
+      <spacer name="spacer6">
+       <property name="orientation">
+        <enum>Qt::Orientation::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="1" column="1">
+      <layout class="QHBoxLayout" name="sizeLayout">
+       <item>
+        <widget class="QLabel" name="sizeText">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Размер:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="spacer4">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="setLength">
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="value">
+          <number>11</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="9" column="3">
+      <widget class="QPushButton" name="showSavedButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Показать сохраненные массивы</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="inputText">
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Ввод массива</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="3">
+      <widget class="Line" name="line2">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="3">
+      <spacer name="spacer5">
+       <property name="orientation">
+        <enum>Qt::Orientation::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="0" column="3">
+      <widget class="QLabel" name="initialArrayText">
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Исходный массив</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="3">
+      <widget class="QTextEdit" name="showSavedArrays">
+       <property name="styleSheet">
+        <string notr="true">border: 1px solid #ffffff;</string>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+       <property name="html">
+        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
@@ -452,63 +287,443 @@ li.checked::marker { content: &quot;\2612&quot;; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Отсортированный:&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;-3 1 1 1 2 3 9 9&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="3">
+      <widget class="QLabel" name="sortedArrayText">
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Отсортированный массив</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="3">
+      <spacer name="spacer1">
+       <property name="orientation">
+        <enum>Qt::Orientation::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="3" column="1" rowspan="9">
+      <widget class="QTableWidget" name="inputArray">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>130</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="baseSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LayoutDirection::LeftToRight</enum>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">    QTableWidget::item {
+     border-bottom: 1px solid white;
+    border-left: none;
+     border-right: none;
+     border-top: none;
+    }
+</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Shape::NoFrame</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Shadow::Sunken</enum>
+       </property>
+       <property name="lineWidth">
+        <number>1</number>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustIgnored</enum>
+       </property>
+       <property name="autoScrollMargin">
+        <number>16</number>
+       </property>
+       <property name="verticalScrollMode">
+        <enum>QAbstractItemView::ScrollMode::ScrollPerItem</enum>
+       </property>
+       <property name="showGrid">
+        <bool>true</bool>
+       </property>
+       <property name="gridStyle">
+        <enum>Qt::PenStyle::SolidLine</enum>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+       <property name="cornerButtonEnabled">
+        <bool>true</bool>
+       </property>
+       <property name="rowCount">
+        <number>11</number>
+       </property>
+       <property name="columnCount">
+        <number>1</number>
+       </property>
+       <attribute name="horizontalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="horizontalHeaderCascadingSectionResizes">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderCascadingSectionResizes">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+        <bool>false</bool>
+       </attribute>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <column/>
+      </widget>
+     </item>
+     <item row="13" column="3">
+      <layout class="QHBoxLayout" name="arrowsLayout">
+       <item>
+        <spacer name="spacer2">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="goLeftButton">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>Assets/left.svg</normaloff>Assets/left.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>50</width>
+           <height>50</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="goRightButton">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>Assets/right.svg</normaloff>Assets/right.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>50</width>
+           <height>50</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="spacer3">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="3">
+      <widget class="QLineEdit" name="initialArrayOutput">
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0" rowspan="17">
+      <widget class="Line" name="line3">
+       <property name="orientation">
+        <enum>Qt::Orientation::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
-   <widget class="QPushButton" name="goLeftButton">
+   <widget class="QWidget" name="panel" native="true">
     <property name="geometry">
      <rect>
-      <x>490</x>
-      <y>470</y>
-      <width>61</width>
-      <height>51</height>
+      <x>0</x>
+      <y>0</y>
+      <width>161</width>
+      <height>601</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>Assets/left.svg</normaloff>Assets/left.svg</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>50</width>
-      <height>50</height>
-     </size>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="goRightButton">
-    <property name="geometry">
-     <rect>
-      <x>580</x>
-      <y>470</y>
-      <width>61</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>Assets/right.svg</normaloff>Assets/right.svg</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>50</width>
-      <height>50</height>
-     </size>
-    </property>
+    <widget class="QWidget" name="verticalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>171</width>
+       <height>601</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="panelLayout">
+      <property name="leftMargin">
+       <number>10</number>
+      </property>
+      <property name="rightMargin">
+       <number>10</number>
+      </property>
+      <property name="bottomMargin">
+       <number>10</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" name="menuPanelLayout">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="profileText">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Профиль</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="menuButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>Assets/menu.svg</normaloff>Assets/menu.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>24</width>
+            <height>24</height>
+           </size>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="topPanelLayout">
+        <item>
+         <widget class="QLabel" name="profileImage">
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>100</height>
+           </size>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LayoutDirection::LeftToRight</enum>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap>Assets/profile.svg</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="profileName">
+        <property name="font">
+         <font>
+          <pointsize>8</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Unsigned User</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="signInButton">
+        <property name="text">
+         <string>Войти</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="signUpButton">
+        <property name="text">
+         <string>Зарегестрироваться</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Orientation::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="bottomPanelLayout">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QPushButton" name="infoButton">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>Assets/information.svg</normaloff>Assets/information.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>24</width>
+            <height>24</height>
+           </size>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
    </widget>
   </widget>
  </widget>

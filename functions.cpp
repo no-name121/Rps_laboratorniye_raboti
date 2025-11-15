@@ -1,8 +1,7 @@
 #include "functions.h"
 #include <string>
 #include <vector>
-#include <QtSql/QSqlDatabase>
-#include <QtSql/QSqlError>
+#include <QtSql>
 #include <QDebug>
 
 using namespace std;
@@ -16,21 +15,38 @@ string vectorToStr(vector<int>& vec){
     return str;
 }
 
-void baza(){
-    qInfo() << "Подключение к базе";
+// потом удалить
+void printDatabases(){
+    QSqlQuery query;
+    query.exec("SELECT * FROM users");
+    while (query.next()) {
+        qInfo() << query.value(0).toString() << query.value(1).toString() << query.value(2).toString();
+    }
 
-    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+    // query = "SELECT * FROM arrays";
+    // while (query.next()) {
+    //     qInfo() << query.value(0).toString() << query.value(1).toString();
+    // }
+}
 
-    db.setHostName("localhost");
-    db.setPort(3306);
-    db.setDatabaseName("Lab3");
-    db.setUserName("root");
-    db.setPassword("475769000");
+void createDatabase(){
+    QSqlQuery query;
 
-    if (db.open()) {
+    query.exec("CREATE TABLE IF NOT EXISTS users(user_id int PRIMARY KEY, username varchar(20), password varchar(30));");
+    query.exec("INSERT INTO users(user_id, username, password) VALUES (1, 'biba', '12345');");
+    query.exec("INSERT INTO users(user_id, username, password) VALUES (2, 'boba', 'paroll');");
+
+    printDatabases();
+}
+
+void connectDatabase(){
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("lab3_database.sqlite");
+
+    if (db.open())
         qInfo() << "База база";
-    }
-    else {
+    else
         qInfo() << "Антибаза";
-    }
+
+    createDatabase();
 }
