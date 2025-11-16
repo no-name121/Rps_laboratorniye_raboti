@@ -31,6 +31,10 @@ private slots:
 
     void on_randomNumsButton_clicked();
 
+    void on_signUpButton_clicked();
+
+    void on_signInButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 
@@ -45,5 +49,6 @@ private:
     QPropertyAnimation* moveSignUpButton;
 
     QPropertyAnimation *layoutAnimation;
+
 };
 #endif // MAINWINDOW_H

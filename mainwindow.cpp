@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include "sort.h"
 #include "functions.h"
+#include "signupwindow.h"
+#include "signinwindow.h"
 #include <vector>
 #include <QInputDialog>
 #include <QtSql>
@@ -43,6 +45,7 @@ MainWindow::MainWindow(QWidget *parent)
     layoutAnimation->setDuration(300);
 
     panelIsMaximized = true;
+
 }
 
 MainWindow::~MainWindow()
@@ -193,5 +196,24 @@ void MainWindow::on_menuButton_clicked()
 
     animateWidgets(!panelIsMaximized);
     panelIsMaximized = !panelIsMaximized;
+}
+
+// регистрация
+void MainWindow::on_signUpButton_clicked()
+{
+    signupwindow w;
+    w.setModal(true);
+    w.exec();
+    //QSqlQuery query;
+
+    //query.exec("INSERT INTO users(user_id, username, password) VALUES ()");
+}
+
+// вход
+void MainWindow::on_signInButton_clicked()
+{
+    signinwindow w;
+    w.setModal(true);
+    w.exec();
 }
 

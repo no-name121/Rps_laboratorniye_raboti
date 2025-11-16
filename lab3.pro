@@ -13,15 +13,21 @@ SOURCES += \
     functions.cpp \
     main.cpp \
     mainwindow.cpp \
+    signinwindow.cpp \
+    signupwindow.cpp \
     sort.cpp
 
 HEADERS += \
     functions.h \
     mainwindow.h \
+    signinwindow.h \
+    signupwindow.h \
     sort.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    signinwindow.ui \
+    signupwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
