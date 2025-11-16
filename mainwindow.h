@@ -25,7 +25,11 @@ private slots:
 
     void on_saveButton_clicked();
 
+    void animateWidgets(bool panelIsMaximized);
+
     void on_menuButton_clicked();
+
+    void on_randomNumsButton_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -33,6 +37,13 @@ private:
     QPropertyAnimation* panelAnimation;
     bool panelIsMaximized;
     int panelMinWidth = 60;
-    int panelMaxWidth = 200;
+    int panelMaxWidth = 160;
+
+    QPropertyAnimation* moveProfileImage;
+    QPropertyAnimation* moveProfileName;
+    QPropertyAnimation* moveSignInButton;
+    QPropertyAnimation* moveSignUpButton;
+
+    QPropertyAnimation *layoutAnimation;
 };
 #endif // MAINWINDOW_H
