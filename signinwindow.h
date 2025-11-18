@@ -15,8 +15,14 @@ public:
     explicit signinwindow(QWidget *parent = nullptr);
     ~signinwindow();
 
+private slots:
+    void on_buttonBox_accepted();
+
 private:
     Ui::signinwindow *ui;
+
+signals:
+    void userSignedIn(const QString&);
 };
 
 #endif // SIGNINWINDOW_H

@@ -8,6 +8,8 @@
 #include <QInputDialog>
 #include <QtSql>
 
+int MainWindow::arrayIndex = 1;
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -40,7 +42,7 @@ MainWindow::MainWindow(QWidget *parent)
     moveSignUpButton->setDuration(300);
     moveSignUpButton->setEasingCurve(QEasingCurve::InOutQuad);
 
-    // растягивание основных виджетов
+    // сдвиг основных виджетов
     layoutAnimation = new QPropertyAnimation(ui->mainProgram, "geometry");
     layoutAnimation->setDuration(300);
 
@@ -50,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-    // добавить удаление из базы массивов по юзерайди 0
+    QSqlQuery query("DELETE FROM arrays WHERE username = 'Unsigned User';");
 
     delete ui;
 }
@@ -102,10 +104,11 @@ void MainWindow::on_saveButton_clicked()
 {
     QSqlQuery query;
 
+    QString username = ui->profileName->text();
     QString initial_array = ui->initialArrayOutput->text();
     QString sorted_array = ui->sortedArrayOutput->text();
 
-    query.exec("INSERT INTO arrays(user_id, initial_array, sorted_array) VALUES (0, '" + initial_array + "', '" + sorted_array + "');");
+    query.exec("INSERT INTO arrays(username, initial_array, sorted_array) VALUES ('" + username + "', '" + initial_array + "', '" + sorted_array + "');");
 
     printDatabases();
 }
@@ -204,9 +207,12 @@ void MainWindow::on_signUpButton_clicked()
     signupwindow w;
     w.setModal(true);
     w.exec();
-    //QSqlQuery query;
 
-    //query.exec("INSERT INTO users(user_id, username, password) VALUES ()");
+}
+
+// отображение юзернейма при входе
+void MainWindow::setUsername(const QString& recievedUsername){
+    ui->profileName->setText(recievedUsername);
 }
 
 // вход
@@ -214,6 +220,47 @@ void MainWindow::on_signInButton_clicked()
 {
     signinwindow w;
     w.setModal(true);
+
+    QDialog::connect(&w, SIGNAL(userSignedIn(QString)), SLOT(setUsername(QString)));
+
     w.exec();
+}
+
+void MainWindow::showArray(){
+    ui->showSavedArrays->setText("Массив №" + QString::number(arrayIndex) + "\n\n"
+                                 "Исходный:\n" + arrays[arrayIndex].first + "\n\n"
+                                 "Отсортированный:\n" + arrays[arrayIndex].second);
+}
+
+void MainWindow::on_showSavedButton_clicked()
+{
+    arrayIndex = 1;
+
+    QSqlQuery query("SELECT initial_array, sorted_array FROM arrays WHERE username = '" + ui->profileName->text() + "';");
+    arrays.clear();
+
+    for (int i = 1; query.next(); i++) {
+        arrays[i] = std::pair(query.value(0).toString(), query.value(1).toString());
+    }
+
+    showArray();
+}
+
+
+void MainWindow::on_goLeftButton_clicked()
+{
+    if (arrayIndex > 1)
+        arrayIndex--;
+
+    showArray();
+}
+
+
+void MainWindow::on_goRightButton_clicked()
+{
+    if (arrayIndex < arrays.rbegin()->first)
+        arrayIndex++;
+
+    showArray();
 }
 

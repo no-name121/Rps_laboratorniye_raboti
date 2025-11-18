@@ -18,6 +18,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    static int arrayIndex;
+
 private slots:
     void on_setLength_valueChanged(int length);
 
@@ -35,6 +37,14 @@ private slots:
 
     void on_signInButton_clicked();
 
+    void setUsername(const QString& recievedUsername);
+
+    void on_showSavedButton_clicked();
+
+    void on_goLeftButton_clicked();
+
+    void on_goRightButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 
@@ -50,5 +60,8 @@ private:
 
     QPropertyAnimation *layoutAnimation;
 
+    std::map <int, std::pair<QString, QString>> arrays;
+
+    void showArray();
 };
 #endif // MAINWINDOW_H
