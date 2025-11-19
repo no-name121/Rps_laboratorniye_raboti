@@ -6,6 +6,7 @@
 #include "signinwindow.h"
 #include <vector>
 #include <QInputDialog>
+#include <QMessageBox>
 #include <QtSql>
 
 int MainWindow::arrayIndex = 1;
@@ -67,9 +68,25 @@ void MainWindow::on_setLength_valueChanged(int length)
 void MainWindow::on_sortButton_clicked()
 {
     std::vector<int> arrayToSort;
+    QTableWidgetItem* slotValue;
+    int arrayItem;
+    bool inputIsCorrect = true;
 
-    for (int i = 0; i < ui->setLength->value(); i++)
-        arrayToSort.push_back((ui->inputArray->item(i, 0)->text()).toInt());
+    for (int i = 0; i < ui->setLength->value(); i++) {
+        slotValue = ui->inputArray->item(i, 0);
+
+        if (!slotValue || slotValue->text().isEmpty()) {
+            QMessageBox::critical(this, "Ошибка", "Некорректный ввод массива.");
+            return;
+        }
+        arrayItem = slotValue->text().toInt(&inputIsCorrect);
+
+        if (!inputIsCorrect) {
+            QMessageBox::critical(this, "Ошибка", "Некорректный ввод массива.");
+            return;
+        }
+        arrayToSort.push_back(arrayItem);
+    }
 
     ui->initialArrayOutput->setText(QString::fromStdString(vectorToStr(arrayToSort)));
 
@@ -226,12 +243,14 @@ void MainWindow::on_signInButton_clicked()
     w.exec();
 }
 
+// отображение сохраненного массива
 void MainWindow::showArray(){
     ui->showSavedArrays->setText("Массив №" + QString::number(arrayIndex) + "\n\n"
                                  "Исходный:\n" + arrays[arrayIndex].first + "\n\n"
                                  "Отсортированный:\n" + arrays[arrayIndex].second);
 }
 
+// загрузка сохраненных массивов
 void MainWindow::on_showSavedButton_clicked()
 {
     arrayIndex = 1;
@@ -243,24 +262,33 @@ void MainWindow::on_showSavedButton_clicked()
         arrays[i] = std::pair(query.value(0).toString(), query.value(1).toString());
     }
 
-    showArray();
+    if (arrays.empty())
+        ui->showSavedArrays->setText("Сохраненные массивы не найдены");
+    else
+        showArray();
 }
 
-
+// предыдущий сохраненный массив
 void MainWindow::on_goLeftButton_clicked()
 {
-    if (arrayIndex > 1)
+    if (!arrays.empty() && arrayIndex > 1) {
         arrayIndex--;
-
-    showArray();
+        showArray();
+    }
 }
 
-
+// следующий сохраненный массив
 void MainWindow::on_goRightButton_clicked()
 {
-    if (arrayIndex < arrays.rbegin()->first)
+    if (!arrays.empty() && arrayIndex < arrays.rbegin()->first) {
         arrayIndex++;
+        showArray();
+    }
+}
 
-    showArray();
+// информация о программе
+void MainWindow::on_infoButton_clicked()
+{
+
 }
 
