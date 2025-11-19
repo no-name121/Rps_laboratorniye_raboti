@@ -99,14 +99,20 @@ void MainWindow::on_sortButton_clicked()
 void MainWindow::on_randomNumsButton_clicked()
 {
     bool withRange = true;
+    bool rangeIsCorrect = true;
 
     QString rangeFirstNum = QInputDialog::getText(this, "Ввод диапазона", "Введите первое число диапазона:\n(оставьте пустым для генерации без диапазона)", QLineEdit::Normal, "");
     QString rangeSecondNum = QInputDialog::getText(this, "Ввод диапазона", "Введите второе число диапазона:\n(оставьте пустым для генерации без диапазона)", QLineEdit::Normal, "");
 
-    if (rangeFirstNum == "" || rangeSecondNum == "")
+    if (rangeFirstNum.simplified().isEmpty() && rangeSecondNum.simplified().isEmpty())
         withRange = false;
 
-    int rangeSize = rangeSecondNum.toInt() - rangeFirstNum.toInt() + 1;
+    int rangeSize = rangeSecondNum.toInt(&rangeIsCorrect) - rangeFirstNum.toInt(&rangeIsCorrect) + 1;
+
+    if ((!rangeIsCorrect && withRange) || (rangeFirstNum > rangeSecondNum)){
+        QMessageBox::critical(this, "Ошибка", "Некорректный ввод диапазона.");
+        return;
+    }
 
     for (int i = 0; i < ui->setLength->value(); i++){
         if (withRange)
