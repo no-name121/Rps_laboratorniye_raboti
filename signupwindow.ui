@@ -31,6 +31,11 @@
   <property name="windowTitle">
    <string>Регистрация аккаунта</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(12, 19, 36);
+selection-background-color: rgb(63, 65, 206);
+selection-color: rgb(184, 195, 255);</string>
+  </property>
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
@@ -80,6 +85,12 @@
      <height>26</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(44, 40, 72);a</string>
+   </property>
+   <property name="maxLength">
+    <number>20</number>
+   </property>
   </widget>
   <widget class="QLabel" name="passwordText">
    <property name="geometry">
@@ -107,6 +118,12 @@
      <width>331</width>
      <height>26</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(44, 40, 72);a</string>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
    </property>
    <property name="echoMode">
     <enum>QLineEdit::EchoMode::Password</enum>
@@ -138,6 +155,12 @@
      <width>331</width>
      <height>26</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(44, 40, 72);a</string>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
    </property>
    <property name="echoMode">
     <enum>QLineEdit::EchoMode::Password</enum>

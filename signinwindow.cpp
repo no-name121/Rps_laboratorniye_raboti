@@ -2,7 +2,7 @@
 #include "ui_signinwindow.h"
 #include <QSql>
 #include <QSqlQuery>
-#include <QDebug>
+#include <QMessageBox>
 
 signinwindow::signinwindow(QWidget *parent)
     : QDialog(parent)
@@ -26,13 +26,14 @@ void signinwindow::on_buttonBox_accepted()
     query.exec("SELECT username, password FROM users WHERE username = '" + inpUsername + "';");
     if (query.next()){
         if (query.value("password").toString() == inpPassword) {
-            qInfo() << "даааааааааааа, все правильно";
             emit userSignedIn(inpUsername);
         }
         else
-            qInfo() << query.value("password") << " неправильный пароль, это ты кого взломть пытаешься";
+            QMessageBox::critical(this, "Ошибка", "Неверный пароль.");
     }
-
+    else {
+        QMessageBox::critical(this, "Ошибка", "Пользователь не найден.");
+    }
 
 }
 

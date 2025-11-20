@@ -8,6 +8,6 @@ std::string vectorToStr(std::vector<int>& vec);
 
 void connectDatabase();
 
-void printDatabases();
+void createDatabase();
 
 #endif // FUNCTIONS_H

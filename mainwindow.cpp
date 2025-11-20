@@ -26,7 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
     panelAnimation->setDuration(300);
     panelAnimation->setEasingCurve(QEasingCurve::InOutQuad);
 
-    // чтобы часть виджетов задвигалась с панелькой
+    // сдвиг виджетов панели
     moveProfileImage = new QPropertyAnimation(ui->profileImage, "pos");
     moveProfileImage->setDuration(300);
     moveProfileImage->setEasingCurve(QEasingCurve::InOutQuad);
@@ -131,9 +131,14 @@ void MainWindow::on_saveButton_clicked()
     QString initial_array = ui->initialArrayOutput->text();
     QString sorted_array = ui->sortedArrayOutput->text();
 
+    if (initial_array.isEmpty() || sorted_array.isEmpty()) {
+        QMessageBox::critical(this, "Ошибка", "Ошибка при сохранении пустого массива.");
+        return;
+    }
+
     query.exec("INSERT INTO arrays(username, initial_array, sorted_array) VALUES ('" + username + "', '" + initial_array + "', '" + sorted_array + "');");
 
-    printDatabases();
+    QMessageBox::information(this, "Сохранение успешно", "Массив сохранен в базу данных.");
 }
 
 // скрытие виджетов
@@ -295,6 +300,6 @@ void MainWindow::on_goRightButton_clicked()
 // информация о программе
 void MainWindow::on_infoButton_clicked()
 {
-
+    QMessageBox::about(this, "О программе", "Программа для сортировки массивов алгоритмом \"Гномьей сортировки\".");
 }
 

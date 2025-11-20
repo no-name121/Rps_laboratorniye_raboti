@@ -35,6 +35,10 @@
    <string notr="true">Background:rgb(0, 6, 21);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">selection-background-color: rgb(63, 65, 206);
+selection-color: rgb(184, 195, 255);</string>
+   </property>
    <widget class="QWidget" name="panel" native="true">
     <property name="geometry">
      <rect>
@@ -61,6 +65,9 @@
       <width>160</width>
       <height>600</height>
      </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(12, 19, 36)</string>
     </property>
     <widget class="QWidget" name="verticalLayoutWidget">
      <property name="geometry">
@@ -93,8 +100,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset>
-          <normaloff>Assets/menu.svg</normaloff>Assets/menu.svg</iconset>
+         <iconset resource="assets.qrc">
+          <normaloff>:/new/prefix1/Assets/menu.svg</normaloff>:/new/prefix1/Assets/menu.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -124,7 +131,7 @@
            <string/>
           </property>
           <property name="pixmap">
-           <pixmap>Assets/profile.svg</pixmap>
+           <pixmap resource="assets.qrc">:/new/prefix1/Assets/profile.svg</pixmap>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
@@ -153,6 +160,18 @@
       </item>
       <item>
        <widget class="QPushButton" name="signInButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>142</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="text">
          <string>Войти</string>
         </property>
@@ -160,6 +179,18 @@
       </item>
       <item>
        <widget class="QPushButton" name="signUpButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>142</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="text">
          <string>Зарегестрироваться</string>
         </property>
@@ -192,8 +223,8 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>Assets/information.svg</normaloff>Assets/information.svg</iconset>
+           <iconset resource="assets.qrc">
+            <normaloff>:/new/prefix1/Assets/information.svg</normaloff>:/new/prefix1/Assets/information.svg</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -248,7 +279,7 @@
        <height>601</height>
       </rect>
      </property>
-     <layout class="QGridLayout" name="mainLayout" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,1,0,4">
+     <layout class="QGridLayout" name="mainLayout" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="1,0,4">
       <property name="leftMargin">
        <number>10</number>
       </property>
@@ -261,20 +292,30 @@
       <property name="bottomMargin">
        <number>10</number>
       </property>
-      <item row="12" column="3">
-       <spacer name="spacer6">
-        <property name="orientation">
-         <enum>Qt::Orientation::Vertical</enum>
+      <property name="horizontalSpacing">
+       <number>15</number>
+      </property>
+      <item row="9" column="2">
+       <widget class="QTextEdit" name="showSavedArrays">
+        <property name="styleSheet">
+         <string notr="true">border: 1px solid #ffffff;</string>
         </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>13</height>
-         </size>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
-       </spacer>
+        <property name="html">
+         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
       </item>
-      <item row="8" column="3">
+      <item row="6" column="2">
        <spacer name="spacer5">
         <property name="orientation">
          <enum>Qt::Orientation::Vertical</enum>
@@ -287,182 +328,19 @@
         </property>
        </spacer>
       </item>
-      <item row="12" column="1" rowspan="2">
-       <layout class="QVBoxLayout" name="lowerButtonsLayout" stretch="0,0">
-        <item>
-         <widget class="QPushButton" name="randomNumsButton">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>Случайные числа</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="sortButton">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>Сортировать</string>
-          </property>
-          <property name="icon">
-           <iconset>
-            <normaloff>Assets/sort.svg</normaloff>Assets/sort.svg</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>24</width>
-            <height>24</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="0" column="3">
-       <widget class="QLabel" name="initialArrayText">
+      <item row="2" column="2">
+       <widget class="QLabel" name="sortedArrayText">
         <property name="font">
          <font>
           <pointsize>14</pointsize>
          </font>
         </property>
         <property name="text">
-         <string>Исходный массив</string>
+         <string>Отсортированный массив</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="2" rowspan="17">
-       <widget class="Line" name="line">
-        <property name="orientation">
-         <enum>Qt::Orientation::Vertical</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="3">
-       <widget class="QPushButton" name="showSavedButton">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Показать сохраненные массивы</string>
-        </property>
-       </widget>
-      </item>
-      <item row="10" column="3">
-       <spacer name="spacer1">
-        <property name="orientation">
-         <enum>Qt::Orientation::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>13</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="13" column="3">
-       <layout class="QHBoxLayout" name="arrowsLayout">
-        <item>
-         <spacer name="spacer2">
-          <property name="orientation">
-           <enum>Qt::Orientation::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QPushButton" name="goLeftButton">
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset>
-            <normaloff>Assets/left.svg</normaloff>Assets/left.svg</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>50</width>
-            <height>50</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="goRightButton">
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset>
-            <normaloff>Assets/right.svg</normaloff>Assets/right.svg</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>50</width>
-            <height>50</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="spacer3">
-          <property name="orientation">
-           <enum>Qt::Orientation::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </item>
-      <item row="3" column="1" rowspan="9">
+      <item row="2" column="0" rowspan="8">
        <widget class="QTableWidget" name="inputArray">
         <property name="enabled">
          <bool>true</bool>
@@ -574,41 +452,202 @@
         <column/>
        </widget>
       </item>
-      <item row="4" column="3">
+      <item row="3" column="2">
        <widget class="QLineEdit" name="sortedArrayOutput">
         <property name="readOnly">
          <bool>true</bool>
         </property>
        </widget>
       </item>
-      <item row="0" column="0" rowspan="17">
-       <widget class="Line" name="line3">
+      <item row="11" column="2">
+       <layout class="QHBoxLayout" name="arrowsLayout">
+        <item>
+         <spacer name="spacer2">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="goLeftButton">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="assets.qrc">
+            <normaloff>:/new/prefix1/Assets/left.svg</normaloff>:/new/prefix1/Assets/left.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="goRightButton">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="assets.qrc">
+            <normaloff>:/new/prefix1/Assets/right.svg</normaloff>:/new/prefix1/Assets/right.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="spacer3">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item row="5" column="2">
+       <widget class="Line" name="line2">
         <property name="orientation">
-         <enum>Qt::Orientation::Vertical</enum>
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
        </widget>
       </item>
-      <item row="11" column="3">
-       <widget class="QTextEdit" name="showSavedArrays">
-        <property name="styleSheet">
-         <string notr="true">border: 1px solid #ffffff;</string>
+      <item row="4" column="2">
+       <widget class="QPushButton" name="saveButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string> Сохранить результат</string>
+        </property>
+        <property name="icon">
+         <iconset resource="assets.qrc">
+          <normaloff>:/new/prefix1/Assets/save.svg</normaloff>:/new/prefix1/Assets/save.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLineEdit" name="initialArrayOutput">
         <property name="readOnly">
          <bool>true</bool>
         </property>
-        <property name="html">
-         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
        </widget>
       </item>
-      <item row="0" column="1">
+      <item row="10" column="0" rowspan="2">
+       <layout class="QVBoxLayout" name="lowerButtonsLayout" stretch="0,0">
+        <property name="spacing">
+         <number>10</number>
+        </property>
+        <item>
+         <widget class="QPushButton" name="randomNumsButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Случайные числа</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="sortButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Сортировать</string>
+          </property>
+          <property name="icon">
+           <iconset resource="assets.qrc">
+            <normaloff>:/new/prefix1/Assets/sort.svg</normaloff>:/new/prefix1/Assets/sort.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>24</width>
+            <height>24</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="8" column="2">
+       <spacer name="spacer1">
+        <property name="orientation">
+         <enum>Qt::Orientation::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>13</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="0">
        <widget class="QLabel" name="inputText">
         <property name="font">
          <font>
@@ -620,19 +659,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
        </widget>
       </item>
-      <item row="3" column="3">
-       <widget class="QLabel" name="sortedArrayText">
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-         </font>
+      <item row="0" column="1" rowspan="13">
+       <widget class="Line" name="line">
+        <property name="lineWidth">
+         <number>1</number>
         </property>
-        <property name="text">
-         <string>Отсортированный массив</string>
+        <property name="orientation">
+         <enum>Qt::Orientation::Vertical</enum>
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
+      <item row="1" column="0">
        <layout class="QHBoxLayout" name="sizeLayout">
         <item>
          <widget class="QLabel" name="sizeText">
@@ -671,15 +708,33 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </item>
        </layout>
       </item>
-      <item row="1" column="3">
-       <widget class="QLineEdit" name="initialArrayOutput">
-        <property name="readOnly">
-         <bool>true</bool>
+      <item row="0" column="2">
+       <widget class="QLabel" name="initialArrayText">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Исходный массив</string>
         </property>
        </widget>
       </item>
-      <item row="6" column="3">
-       <widget class="QPushButton" name="saveButton">
+      <item row="10" column="2">
+       <spacer name="spacer6">
+        <property name="orientation">
+         <enum>Qt::Orientation::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>13</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="7" column="2">
+       <widget class="QPushButton" name="showSavedButton">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -692,24 +747,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
          </font>
         </property>
         <property name="text">
-         <string> Сохранить результат</string>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>Assets/save.svg</normaloff>Assets/save.svg</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>20</width>
-          <height>20</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="3">
-       <widget class="Line" name="line2">
-        <property name="orientation">
-         <enum>Qt::Orientation::Horizontal</enum>
+         <string>Показать сохраненные массивы</string>
         </property>
        </widget>
       </item>
@@ -718,6 +756,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="assets.qrc"/>
+ </resources>
  <connections/>
 </ui>
