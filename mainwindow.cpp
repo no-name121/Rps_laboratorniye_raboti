@@ -249,7 +249,7 @@ void MainWindow::on_signInButton_clicked()
     signinwindow w;
     w.setModal(true);
 
-    QDialog::connect(&w, SIGNAL(userSignedIn(QString)), SLOT(setUsername(QString)));
+    QDialog::connect(&w, SIGNAL(userSignedIn(QString)), this, SLOT(setUsername(QString)));
 
     w.exec();
 }
