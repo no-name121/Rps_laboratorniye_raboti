@@ -74,7 +74,7 @@ selection-color: rgb(184, 195, 255);</string>
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>171</width>
+       <width>161</width>
        <height>601</height>
       </rect>
      </property>
@@ -123,6 +123,9 @@ selection-color: rgb(184, 195, 255);</string>
             <width>100</width>
             <height>100</height>
            </size>
+          </property>
+          <property name="mouseTracking">
+           <bool>false</bool>
           </property>
           <property name="layoutDirection">
            <enum>Qt::LayoutDirection::LeftToRight</enum>

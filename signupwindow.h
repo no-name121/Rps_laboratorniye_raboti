@@ -18,7 +18,7 @@ public:
 private slots:
     void on_buttonBox_accepted();
 
-private:
+public:
     Ui::signupwindow *ui;
 };
 

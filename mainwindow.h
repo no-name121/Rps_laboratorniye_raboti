@@ -20,7 +20,7 @@ public:
 
     static int arrayIndex;
 
-private slots:
+public slots:
     void on_setLength_valueChanged(int length);
 
     void on_sortButton_clicked();
@@ -47,9 +47,9 @@ private slots:
 
     void on_infoButton_clicked();
 
-private:
+public:
     Ui::MainWindow *ui;
-
+private:
     QPropertyAnimation* panelAnimation;
     bool panelIsMaximized;
     int panelMinWidth = 60;

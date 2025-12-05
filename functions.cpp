@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <QtSql>
+#include <QString>
 
 using namespace std;
 
@@ -26,9 +27,9 @@ void createDatabase(){
                                                  "FOREIGN KEY (username) REFERENCES users(username));");
 }
 
-void connectDatabase(){
+void connectDatabase(QString name){
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("lab3_database.sqlite");
+    db.setDatabaseName(name);
 
     db.open();
 

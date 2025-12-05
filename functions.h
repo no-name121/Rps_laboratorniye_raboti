@@ -3,10 +3,11 @@
 
 #include <string>
 #include <vector>
+#include <QString>
 
 std::string vectorToStr(std::vector<int>& vec);
 
-void connectDatabase();
+void connectDatabase(QString name);
 
 void createDatabase();
 

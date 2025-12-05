@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
-    connectDatabase();
+    connectDatabase("lab3_database.sqlite");
     ui->setupUi(this);
 
     // растягивание для строк таблицы
