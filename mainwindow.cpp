@@ -101,16 +101,37 @@ void MainWindow::on_randomNumsButton_clicked()
     bool withRange = true;
     bool rangeIsCorrect = true;
 
-    QString rangeFirstNum = QInputDialog::getText(this, "Ввод диапазона", "Введите первое число диапазона:\n(оставьте пустым для генерации без диапазона)", QLineEdit::Normal, "");
-    QString rangeSecondNum = QInputDialog::getText(this, "Ввод диапазона", "Введите второе число диапазона:\n(оставьте пустым для генерации без диапазона)", QLineEdit::Normal, "");
+    QString rangeFirstNum = QInputDialog::getText(this, "Ввод диапазона", "Введите первое число диапазона(от -2147483648 до 2147483647):\n(оставьте пустым для генерации без диапазона)", QLineEdit::Normal, "");
+
+    if (rangeFirstNum.toLong(&rangeIsCorrect) < -2147483648 || rangeFirstNum.toLong(&rangeIsCorrect) > 2147483647) {
+        QMessageBox::critical(this, "Ошибка", "Выход за пределы диапазона.");
+        return;
+    }
+
+    if (!rangeIsCorrect && !rangeFirstNum.simplified().isEmpty()) {
+        QMessageBox::critical(this, "Ошибка", "Некорректный ввод диапазона.");
+        return;
+    }
+
+    QString rangeSecondNum = QInputDialog::getText(this, "Ввод диапазона", "Введите второе число диапазона(от -2147483648 до 2147483647):\n(оставьте пустым для генерации без диапазона)", QLineEdit::Normal, "");
+
+    if (rangeSecondNum.toLong(&rangeIsCorrect) < -2147483648 || rangeSecondNum.toLong(&rangeIsCorrect) > 2147483647) {
+        QMessageBox::critical(this, "Ошибка", "Выход за пределы диапазона.");
+        return;
+    }
+
+    if (!rangeIsCorrect && !rangeSecondNum.simplified().isEmpty()) {
+        QMessageBox::critical(this, "Ошибка", "Некорректный ввод диапазона.");
+        return;
+    }
 
     if (rangeFirstNum.simplified().isEmpty() && rangeSecondNum.simplified().isEmpty())
         withRange = false;
 
     int rangeSize = rangeSecondNum.toInt(&rangeIsCorrect) - rangeFirstNum.toInt(&rangeIsCorrect) + 1;
 
-    if ((!rangeIsCorrect && withRange) || (rangeFirstNum > rangeSecondNum)){
-        QMessageBox::critical(this, "Ошибка", "Некорректный ввод диапазона.");
+    if (rangeFirstNum > rangeSecondNum){
+        QMessageBox::critical(this, "Ошибка", "Первое число диапазона больше второго.");
         return;
     }
 
@@ -300,6 +321,8 @@ void MainWindow::on_goRightButton_clicked()
 // информация о программе
 void MainWindow::on_infoButton_clicked()
 {
-    QMessageBox::about(this, "О программе", "Программа для сортировки массивов алгоритмом \"Гномьей сортировки\".");
+    QMessageBox::about(this, "О программе", "Программа для сортировки массивов алгоритмом \"Гномьей сортировки\".\n"
+                                            "Работает с массивами размером от 1 до 99.\n"
+                                            "Работает в диапазоне чисел от -2147483648 до 2147483647");
 }
 
